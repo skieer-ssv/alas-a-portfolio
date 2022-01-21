@@ -5,7 +5,7 @@ export default function  Typewriter() {
   const TYPEWRITER_DISPLAY_TIME=4000
     return (
       <Typical
-        steps={['Flutter', TYPEWRITER_DISPLAY_TIME, 'React', TYPEWRITER_DISPLAY_TIME, 'PHP', TYPEWRITER_DISPLAY_TIME, 'Linux', TYPEWRITER_DISPLAY_TIME, ]}
+        steps={[ 'Full-Stack Developer', TYPEWRITER_DISPLAY_TIME,'Cross Platform Developer', TYPEWRITER_DISPLAY_TIME, 'Also "Whatever Tech I see first in the morning" Enthusiast', TYPEWRITER_DISPLAY_TIME, ]}
         loop={Infinity}
         wrapper="span"
         className={'text-2xl'}
