@@ -1,6 +1,6 @@
 import Navbar from "../components/Navbar";
 import Project from "../components/Project";
-import projects from "./data/projectData";
+import projects from "../data/projectData";
 export default function Projects(){
   projects.reverse();
     return(
