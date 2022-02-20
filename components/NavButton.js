@@ -5,7 +5,7 @@ import { withRouter } from 'next/router' //withRouter adds the router prop to th
 const NavButton = ({path,label}) => (
   <Link href={path} passHref>
     <div
-      className= "menu-btn-lg cursor-pointer active:bg-slate-500 block"
+      className= "menu-btn-lg cursor-pointer block"
     >
       <a className=' text-xl  '>{label}</a>
     </div>
