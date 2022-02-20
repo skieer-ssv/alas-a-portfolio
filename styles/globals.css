@@ -11,3 +11,16 @@
   .btn-blue:hover {
     @apply bg-slate-900;
   }
+  .fa-linkedin{
+    color:#0A66C2;
+}
+
+.fa-hashnode{
+color:#2962FF;
+}
+.fa-hackerrank{
+  color:#32C766;
+}
+.fa-blogger{
+  color:#F57C00;
+}
