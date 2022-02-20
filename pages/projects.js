@@ -1,9 +1,12 @@
+import Navbar from "../components/Navbar";
 import Project from "../components/Project";
 import projects from "./api/projectData";
 export default function Projects(){
   
     return(
-        <div><h1>Hellp proj</h1><br/>
+        <div className="p-2">
+        <Navbar/>
+            
         <div className="flex flex-col space-y-10">
         {
             projects.map(project=>(<div key={project.title}>

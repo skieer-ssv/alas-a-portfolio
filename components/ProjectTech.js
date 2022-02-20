@@ -1,14 +1,29 @@
-import Image from 'next/image'
-
+import Image from 'next/image';
+import techNames from '../pages/api/techNames';
 
 export default function ProjectTech(props){
-        const tech=props.tech;
-        const src=`/tech_images/${tech}.png`;
-    return( <Image
+  
+const myLoader = ({ src, width, quality }) => {
+  return `${src}?w=${width}&q=${quality || 50}`
+}
+        const techImage=getTechName( props.tech);
+        function getTechName(tech){
+          if (techNames[tech]){
+            return techNames[tech];
+          }
+          else{
+            return -1;
+          }
+        }
+console.log(techImage);
+        const source= techImage==-1?'/techIconNotFound.jpg' :`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${props.tech}/${techImage}.svg`;
         
-        src={src}
-        alt={tech}
-        height={60}
-        width={60}
+    return( <Image
+      loader={myLoader}
+        src={source}
+        alt={props.tech}
+        height={40}
+        width={40}
+        title={props.tech}
       />)
 }
