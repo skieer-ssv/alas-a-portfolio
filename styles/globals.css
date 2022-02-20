@@ -7,6 +7,11 @@ html{
   --black-primary-text:rgb(46, 45, 45);
 }
 
+hr{
+  border-top: 0.5px solid #c4c1c1c2;
+  
+}
+
 .btn {
     @apply font-bold py-2 px-2 rounded;
   }
