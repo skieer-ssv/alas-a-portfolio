@@ -33,6 +33,8 @@ const techNames = {
     'c': 'c-plain',
     'amazonwebservices': 'amazonwebservices-original',
     'dart': 'dart-original',
-
+    'bootstrap': 'bootstrap-plain',
+    'css3': 'css3-original',
+    'tailwindcss': 'tailwindcss-plain',
 }
 export default techNames;

@@ -2,7 +2,7 @@ import Navbar from "../components/Navbar";
 import Project from "../components/Project";
 import projects from "./data/projectData";
 export default function Projects(){
-  
+  projects.reverse();
     return(
         <div className="p-2" >
         <Navbar/>
