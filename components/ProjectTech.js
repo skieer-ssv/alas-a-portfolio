@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import techNames from '../pages/api/techNames';
+import techNames from '../pages/data/techNames';
 
 export default function ProjectTech(props){
   

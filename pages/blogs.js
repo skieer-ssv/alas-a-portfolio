@@ -1,5 +1,5 @@
 import Navbar from "../components/Navbar"
-import blogsList from "./api/blogsList";
+import blogsList from "./data/blogsList";
 import Blog from "../components/Blog";
 
 

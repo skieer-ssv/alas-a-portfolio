@@ -1,6 +1,6 @@
 import Navbar from "../components/Navbar";
 import Project from "../components/Project";
-import projects from "./api/projectData";
+import projects from "./data/projectData";
 export default function Projects(){
   
     return(

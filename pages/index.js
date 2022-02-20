@@ -7,7 +7,7 @@ import Socials from "../components/Socials";
 export default function Home(){
   
   return(
-<div>
+<div className="p-2">
       <Navbar/>
 
  <div className=" flex justify-center grow " >
