@@ -4,7 +4,7 @@ import projects from "./api/projectData";
 export default function Projects(){
   
     return(
-        <div className="p-2">
+        <div className="p-2" >
         <Navbar/>
             
         <div className="flex flex-col space-y-10">

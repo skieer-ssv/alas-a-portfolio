@@ -14,18 +14,15 @@ export default function Project(props) {
 
     return (
 
-        <div className="grid grid-cols-1 place-items-center md:grid-cols-2 shadow-md p-4 mx-4">
-            <div className="flex flex-col gap-4">
-                <span><h1 className="text-xl text-left">{title}</h1>  {
+        <div className="grid grid-cols-1 place-items-end md:grid-cols-2 shadow hover:shadow-lg p-10 mx-5 gap-2">
+            <div className="flex flex-col gap-4  place-self-stretch">
+                <span><h1 className="text-3xl">{title}</h1>  {
                     isOngoing ?
                         (<span className="text-red-600">Ongoing</span>) : ''
                 }</span>
-    {
-                    githubLink ?
-                        (<Link href={githubLink} passHref><button className="btn btn-blue">Checkout on github </button></Link>) : ""
-                }
+    
 
-                <div className="grid grid-cols-5 gap-4">
+                <div className="grid grid-cols-5 gap-3">
                     {
                         stack.map(tech => (
                             <div key={tech}>
@@ -37,9 +34,12 @@ export default function Project(props) {
                 </div>
              
             </div>
-            <div className="flex flex-col gap-4" >
-            <Image alt={title} src={imagePath} height={200} width={300} title={title} loader={myLoader} />
-            
+            <div className="flex flex-col gap-4 " >
+            <Image alt={title} src={imagePath} height={200} width={320} title={title} loader={myLoader} />
+            {
+                    githubLink ?
+                        (<Link href={githubLink} passHref><button className="btn btn-blue">Checkout on github </button></Link>) : ""
+                }
             </div>
 
         </div>
