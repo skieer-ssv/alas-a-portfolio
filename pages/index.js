@@ -19,7 +19,7 @@ export default function Home(){
    </span> 
    
    </div>
-   <div className="self-center pb-6"><Typewriter/></div>
+   <div className="self-center "><Typewriter/></div>
    <div ><Socials/></div>
    <div className="min-h-fit"><Tweets/></div>
  
