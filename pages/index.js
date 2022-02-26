@@ -7,7 +7,7 @@ import Socials from "../components/Socials";
 export default function Home(){
   
   return(
-<div className="p-2 min-h-screen">
+<div className="p-2 min-h-screen ">
       <Navbar/>
 
  <div className=" flex justify-center grow " >
@@ -19,9 +19,9 @@ export default function Home(){
    </span> 
    
    </div>
-   <div className="self-center "><Typewriter/></div>
+   <div className=" self-center"><Typewriter/></div>
    <div ><Socials/></div>
-   <div className="min-h-fit"><Tweets/></div>
+   <div className="min-h-fit self-center"><Tweets/></div>
  
    </div>
    </div>

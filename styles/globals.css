@@ -6,7 +6,11 @@ html{
   --dark-bg-color:rgb(58, 57, 57);
   --black-primary-text:rgb(46, 45, 45);
 }
-
+@layer base{
+  html{
+    font-family: Share Tech Mono, monospace, proxima-nova, sans-serif;
+  }
+}
 hr{
   border-top: 0.5px solid #c4c1c1c2;
   
