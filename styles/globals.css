@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 html{
   --dark-bg-color:rgb(58, 57, 57);
   --black-primary-text:rgb(46, 45, 45);
@@ -21,7 +21,7 @@ hr{
   .btn-blue:hover {
     @apply bg-slate-900;
   }
-  .fa-linkedin{
+  /* .fa-linkedin{
     color:#0A66C2;
 }
 
@@ -33,7 +33,7 @@ color:#2962FF;
 }
 .fa-blogger{
   color:#F57C00;
-}
+} */
 
 /* DARK THEME TOGGLE */
 /* @media (prefers-color-scheme: dark) {
