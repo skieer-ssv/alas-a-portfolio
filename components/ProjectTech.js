@@ -15,7 +15,6 @@ const myLoader = ({ src, width, quality }) => {
             return -1;
           }
         }
-console.log(techImage);
         const source= techImage==-1?'/techIconNotFound.jpg' :`https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${props.tech}/${techImage}.svg`;
         
     return( <Image
