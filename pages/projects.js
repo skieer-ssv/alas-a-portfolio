@@ -7,7 +7,7 @@ export default function Projects(){
         <div className="p-2" >
         <Navbar/>
             
-        <div className="flex flex-col space-y-10">
+        <div className="grid grid-cols-1 md:grid-cols-3">
         {
             projects.map(project=>(<div key={project.title}>
             <Project  project={project} />
