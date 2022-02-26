@@ -9,7 +9,7 @@ blogsList.reverse();
         <div className="p-2 " >
         <Navbar/>
             
-        <div className="flex flex-col space-y-10 md:mx-24 ">
+        <div className="flex flex-col space-y-10 md:mx-24 mt-8">
         {
             blogsList.map(blog=>(<div key={blog.title}>
             <Blog  blog={blog} />
