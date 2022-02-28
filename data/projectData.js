@@ -27,5 +27,5 @@ const projects = [
     
 ];
 
-
+projects.reverse();
 export default projects;

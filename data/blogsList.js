@@ -25,5 +25,5 @@ const blogsList = [
     },
 
 ]
-
+blogsList.reverse();
 export default blogsList;

@@ -4,7 +4,7 @@ import Blog from "../components/Blog";
 
 
 export default function Blogs(){
-blogsList.reverse();
+
     return(
         <div className="p-2 " >
         <Navbar/>
