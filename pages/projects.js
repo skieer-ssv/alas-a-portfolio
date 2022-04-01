@@ -4,10 +4,10 @@ import projects from "../data/projectData";
 export default function Projects(){
 
     return(
-        <div className="p-2" >
+        <div className="" >
         <Navbar/>
             
-        <div className="grid grid-cols-1 md:grid-cols-3">
+        <div className="p-2 grid grid-cols-1 md:grid-cols-3">
         {
             projects.map(project=>(<div key={project.title}>
             <Project  project={project} />

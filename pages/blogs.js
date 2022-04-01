@@ -6,10 +6,10 @@ import Blog from "../components/Blog";
 export default function Blogs(){
 
     return(
-        <div className="p-2 " >
+        <div className="" >
         <Navbar/>
             
-        <div className="flex flex-col space-y-10 md:mx-24 mt-8">
+        <div className="p-2 flex flex-col space-y-10 md:mx-24 mt-8">
         {
             blogsList.map(blog=>(<div key={blog.title}>
             <Blog  blog={blog} />
