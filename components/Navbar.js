@@ -6,7 +6,7 @@ export default function Navbar(){
             <NavButton path="/projects" label="Projects"/>
             <NavButton path="/blogs" label="Blogs"/>
             <NavButton path="/pwt" label="PWT"/>
-            <NavButton path="/my_stuff" label="My stuff"/>
+            {/* <NavButton path="/my_stuff" label="My stuff"/> */}
         </div>
     )
 }
