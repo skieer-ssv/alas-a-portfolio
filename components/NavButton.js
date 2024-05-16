@@ -3,13 +3,13 @@ import { withRouter } from 'next/router' //withRouter adds the router prop to th
 
 //use the router prop to get the pathname, split it on '/' and style the link by giving it a classname which matches the base path (/writing, /portfolio)
 const NavButton = ({path,label}) => (
-  <Link href={path} passHref>
-    <div
+  <div
       className= "menu-btn-lg cursor-pointer block"
     >
-      <a className=' text-xl  '>{label}</a>
-    </div>
+  <Link href={path} className=' text-xl  '>
+     {label}
   </Link>
+    </div>
 )
 
 export default withRouter(NavButton)

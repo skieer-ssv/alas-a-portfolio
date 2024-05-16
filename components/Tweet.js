@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import tweetIds from '../data/tweetList';
 import {useState,useEffect} from 'react';
+import Link from 'next/link';
 export default function Tweets(){
     const [tweetId,setTweetId]=useState([]);    
     const tweetIdsLength= tweetIds.length;
@@ -15,7 +16,7 @@ export default function Tweets(){
                    
                     If  you can finish reading this sentence before a tweet loads either your net is super slow or my code is shitty.
                     </p>
-                    <a href={`https://twitter.com/siddhant2102/status/${tweetId}?ref_src=twsrc%5Etfw`}></a></blockquote>
+                    <Link href={`https://twitter.com/siddhant2102/status/${tweetId}?ref_src=twsrc%5Etfw`}></Link></blockquote>
                <Head>
                <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script></Head> 
             {/* <TwitterTweetEmbed tweetId={tweetIds[ randomTweet] } placeholder={TweetPlaceholder()} /> */}

@@ -13,7 +13,7 @@ export default function Blog({blog}){
             </div>
             <div className="flex flex-col gap-4 p-3">
             <div className="Title hover:text-twitterBlue">
-              <Link href={blog.link} ><a> <h1 className="text-3xl">{blog.title}</h1></a></Link>
+              <Link href={blog.link} legacyBehavior><a> <h1 className="text-3xl">{blog.title}</h1></a></Link>
                 </div>
                 <div className="description shrink">
                 <p className="">{blog.description}</p>
