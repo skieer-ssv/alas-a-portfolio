@@ -16,7 +16,7 @@ export default function Tweets(){
                    
                     If  you can finish reading this sentence before a tweet loads either your net is super slow or my code is shitty.
                     </p>
-                    <Link href={`https://twitter.com/siddhant2102/status/${tweetId}?ref_src=twsrc%5Etfw`}></Link></blockquote>
+                    <Link href={`https://twitter.com/siddhant2102/status/${tweetId}`}></Link></blockquote>
                <Head>
                <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script></Head> 
             {/* <TwitterTweetEmbed tweetId={tweetIds[ randomTweet] } placeholder={TweetPlaceholder()} /> */}
