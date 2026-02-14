@@ -6,11 +6,11 @@ export default function Home() {
   return (
     <section className="container flex flex-col items-center justify-center gap-6 py-24 md:py-32 text-center px-4">
       <div className="max-w-[800px] flex flex-col items-center gap-4">
-        <h1 className="text-4xl font-extrabold leading-tight tracking-tighter md:text-6xl bg-gradient-to-r from-primary to-primary/50 bg-clip-text text-transparent pb-2">
+        <h1 className="text-4xl font-extrabold leading-tight tracking-tighter md:text-6xl pb-2">
           Hi, I&apos;m Siddhant Vispute.
         </h1>
         <p className="text-xl text-muted-foreground md:text-2xl max-w-[600px]">
-          Full-Stack Developer building scalable web applications.
+          Software Engineer
         </p>
       </div>
 

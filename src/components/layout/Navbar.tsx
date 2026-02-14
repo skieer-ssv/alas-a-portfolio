@@ -24,11 +24,6 @@ export function Navbar() {
     return (
         <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
             <div className="container flex h-16 items-center justify-between px-4 md:px-8">
-                <Link href="/" className="mr-6 flex items-center space-x-2">
-                    <span className="text-lg font-bold sm:inline-block">
-                        Siddhant Vispute
-                    </span>
-                </Link>
                 <div className="hidden md:flex md:items-center md:space-x-6 text-sm font-medium">
                     {navItems.map((item) => (
                         <Link
