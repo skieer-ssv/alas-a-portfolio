@@ -16,6 +16,8 @@ import {
 import { Command } from "cmdk"
 import { useRouter } from "next/navigation"
 import { useTheme } from "next-themes"
+import { DialogTitle } from "@radix-ui/react-dialog"
+import * as VisuallyHidden from "@radix-ui/react-visually-hidden"
 
 export function CommandMenu() {
     const [open, setOpen] = React.useState(false)
@@ -54,6 +56,9 @@ export function CommandMenu() {
                 label="Global Command Menu"
                 className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-background border shadow-xl rounded-xl w-full max-w-lg overflow-hidden z-[100]"
             >
+                <VisuallyHidden.Root>
+                    <DialogTitle>Global Command Menu</DialogTitle>
+                </VisuallyHidden.Root>
                 <div className="flex items-center border-b px-3">
                     <Command.Input
                         className="flex h-11 w-full rounded-md bg-transparent py-3 text-sm outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
