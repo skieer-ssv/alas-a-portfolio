@@ -1,66 +1,96 @@
 "use client"
 
-import Image from "next/image"
+import React from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { motion } from "framer-motion"
+import { Github, ExternalLink } from "lucide-react"
+import {
+    Card,
+    CardContent,
+    CardFooter,
+    CardHeader,
+    CardTitle,
+    CardDescription
+} from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Github, ExternalLink } from "lucide-react"
-import { Project } from "@/lib/data/projects"
+import type { Project } from "@/data/projects"
 
-export function ProjectCard({ project, index }: { project: Project; index: number }) {
+interface ProjectCardProps {
+    project: Project
+    index: number
+}
+
+export function ProjectCard({ project, index }: ProjectCardProps) {
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: index * 0.1 }}
-            className="group relative flex flex-col overflow-hidden rounded-lg border bg-card text-card-foreground shadow-sm transition-all hover:shadow-md"
+            className="h-full"
         >
-            <div className="relative aspect-video overflow-hidden bg-muted">
-                <Image
-                    src={project.imagePath}
-                    alt={project.title}
-                    fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
-                {project.ongoing && (
-                    <div className="absolute top-2 right-2">
-                        <Badge variant="destructive">Ongoing</Badge>
+            <Card className="flex flex-col h-full overflow-hidden border-muted-foreground/20 hover:border-primary/50 transition-colors group">
+                <div className="relative aspect-video overflow-hidden bg-muted/20">
+                    {/* Fallback pattern if image fails or for placeholder */}
+                    <div className="absolute inset-0 bg-muted/50 flex items-center justify-center text-muted-foreground">
+                        <span className="text-xl font-bold opacity-20">{project.title}</span>
                     </div>
-                )}
-            </div>
-            <div className="flex flex-1 flex-col p-4">
-                <h3 className="text-xl font-semibold leading-none tracking-tight mb-2 group-hover:underline underline-offset-4 decoration-primary/50">{project.title}</h3>
-                {project.description && <p className="text-sm text-muted-foreground mb-4 line-clamp-2">{project.description}</p>}
-
-                <div className="mt-auto pt-4">
-                    <div className="flex flex-wrap gap-2 mb-4">
+                    {/* Note: In a real app, valid images would be served. Using fallback for now if images don't exist */}
+                    {project.imagePath && (
+                        <Image
+                            src={project.imagePath}
+                            alt={project.title}
+                            fill
+                            className="object-cover transition-transform duration-500 group-hover:scale-105"
+                            onError={(e) => {
+                                const target = e.target as HTMLImageElement;
+                                target.style.display = 'none';
+                            }}
+                        />
+                    )}
+                </div>
+                <CardHeader>
+                    <div className="flex justify-between items-start gap-2">
+                        <CardTitle className="text-lg font-bold line-clamp-1">{project.title}</CardTitle>
+                        {project.ongoing && (
+                            <Badge variant="secondary" className="text-xs shrink-0">
+                                Ongoing
+                            </Badge>
+                        )}
+                    </div>
+                </CardHeader>
+                <CardContent className="flex-1 space-y-4">
+                    <CardDescription className="line-clamp-3 text-sm">
+                        {project.description}
+                    </CardDescription>
+                    <div className="flex flex-wrap gap-1.5">
                         {project.stack.map((tech) => (
-                            <Badge key={tech} variant="secondary" className="capitalize text-[10px] px-2">
+                            <Badge key={tech} variant="outline" className="text-[10px] px-2 py-0.5 capitalize">
                                 {tech}
                             </Badge>
                         ))}
                     </div>
-
-                    <div className="flex items-center gap-2">
-                        <Link href={project.githubLink} target="_blank" rel="noreferrer" className="w-full">
-                            <Button variant="outline" size="sm" className="w-full">
-                                <Github className="mr-2 h-4 w-4" />
+                </CardContent>
+                <CardFooter className="flex gap-2 p-4 pt-0">
+                    {project.githubLink && (
+                        <Link href={project.githubLink} target="_blank" className="flex-1">
+                            <Button variant="secondary" size="sm" className="w-full gap-2">
+                                <Github className="h-3.5 w-3.5" />
                                 Code
                             </Button>
                         </Link>
-                        {project.demoLink && (
-                            <Link href={project.demoLink} target="_blank" rel="noreferrer" className="w-full">
-                                <Button variant="default" size="sm" className="w-full">
-                                    <ExternalLink className="mr-2 h-4 w-4" />
-                                    Live
-                                </Button>
-                            </Link>
-                        )}
-                    </div>
-                </div>
-            </div>
+                    )}
+                    {project.demoLink && (
+                        <Link href={project.demoLink} target="_blank" className="flex-1">
+                            <Button variant="outline" size="sm" className="w-full gap-2">
+                                <ExternalLink className="h-3.5 w-3.5" />
+                                Demo
+                            </Button>
+                        </Link>
+                    )}
+                </CardFooter>
+            </Card>
         </motion.div>
     )
 }
