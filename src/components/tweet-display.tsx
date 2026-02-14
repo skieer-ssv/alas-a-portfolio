@@ -1,53 +1,29 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
+import { Tweet } from 'react-tweet'
 import { tweetIds } from '@/data/tweet-list'
-import Script from 'next/script'
 import { useTheme } from 'next-themes'
 
+/**
+ * Optimized TweetDisplay using react-tweet for better performance.
+ * This version renders tweets as native HTML/CSS instead of heavy iframes.
+ */
 export function TweetDisplay() {
     const [tweetId, setTweetId] = useState<string | null>(null)
     const { resolvedTheme } = useTheme()
     const [mounted, setMounted] = useState(false)
-    const containerRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
         setMounted(true)
+        // Pick a random tweet once on mount
         const randomTweetId = tweetIds[Math.floor(Math.random() * tweetIds.length)]
         setTweetId(randomTweetId)
     }, [])
 
-    useEffect(() => {
-        if (!mounted || !tweetId || !containerRef.current) return
-
-        const currentTheme = resolvedTheme === 'dark' ? 'dark' : 'light'
-
-        // Manually manage the DOM to avoid React "removeChild" errors.
-        // This happens because Twitter's widgets.js replaces the blockquote with an iframe,
-        // which confuses React's virtual DOM reconciliation during theme changes.
-        containerRef.current.innerHTML = ''
-        const blockquote = document.createElement('blockquote')
-        blockquote.className = 'twitter-tweet w-full invisible' // Start invisible to avoid flicker
-        blockquote.setAttribute('data-theme', currentTheme)
-        blockquote.setAttribute('data-dnt', 'true')
-        blockquote.setAttribute('data-align', 'center')
-
-        const anchor = document.createElement('a')
-        anchor.href = `https://twitter.com/siddhant2102/status/${tweetId}`
-        blockquote.appendChild(anchor)
-
-        containerRef.current.appendChild(blockquote)
-
-        // @ts-ignore
-        if (window.twttr && window.twttr.widgets) {
-            // @ts-ignore
-            window.twttr.widgets.load(containerRef.current)
-        }
-    }, [tweetId, resolvedTheme, mounted])
-
-    if (!mounted) {
+    if (!mounted || !tweetId) {
         return (
-            <div className="w-full max-w-[550px] min-h-[400px] flex items-center justify-center border rounded-xl bg-card animate-pulse">
+            <div className="w-full max-w-[550px] min-h-[300px] flex items-center justify-center border rounded-xl bg-card animate-pulse">
                 <p className="text-muted-foreground text-sm italic">
                     Fetching a thought...
                 </p>
@@ -56,24 +32,13 @@ export function TweetDisplay() {
     }
 
     return (
-        <div className="flex flex-col items-center w-full max-w-[550px] mx-auto group">
+        <div className="w-full flex justify-center min-h-[300px] transition-all duration-500 ease-in-out px-4 select-none">
             <div
-                ref={containerRef}
-                className="w-full flex justify-center min-h-[400px] transition-all duration-500 ease-in-out"
+                className="w-full max-w-[550px] [&&_.react-tweet]:m-0"
+                data-theme={resolvedTheme === 'dark' ? 'dark' : 'light'}
             >
-                {/* Twitter widget will be injected here manually via the useEffect ref */}
+                <Tweet id={tweetId} />
             </div>
-            <Script
-                src="https://platform.twitter.com/widgets.js"
-                strategy="lazyOnload"
-                onLoad={() => {
-                    // @ts-ignore
-                    if (window.twttr && window.twttr.widgets && containerRef.current) {
-                        // @ts-ignore
-                        window.twttr.widgets.load(containerRef.current)
-                    }
-                }}
-            />
         </div>
     )
 }
