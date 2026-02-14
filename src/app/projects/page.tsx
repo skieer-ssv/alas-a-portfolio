@@ -1,4 +1,4 @@
-import { ProjectCard } from "@/components/project-card"
+import { ProjectsList } from "@/components/projects-list"
 import { projects } from "@/data/projects"
 
 export const metadata = {
@@ -18,11 +18,7 @@ export default function ProjectsPage() {
                 </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {projects.map((project, index) => (
-                    <ProjectCard key={project.title} project={project} index={index} />
-                ))}
-            </div>
+            <ProjectsList projects={projects} />
         </div>
     )
 }
