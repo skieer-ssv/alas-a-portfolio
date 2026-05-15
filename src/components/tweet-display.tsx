@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, startTransition } from 'react'
 import { Tweet } from 'react-tweet'
 import { tweetIds } from '@/data/tweet-list'
 import { useTheme } from 'next-themes'
@@ -10,16 +10,24 @@ import { useTheme } from 'next-themes'
  * This version renders tweets as native HTML/CSS instead of heavy iframes.
  */
 export function TweetDisplay() {
-    const [tweetId, setTweetId] = useState<string | null>(null)
-    const { resolvedTheme } = useTheme()
-    const [mounted, setMounted] = useState(false)
+    const [state, setState] = useState<{ mounted: boolean; tweetId: string | null }>({
+        mounted: false,
+        tweetId: null,
+    })
 
     useEffect(() => {
-        setMounted(true)
         // Pick a random tweet once on mount
         const randomTweetId = tweetIds[Math.floor(Math.random() * tweetIds.length)]
-        setTweetId(randomTweetId)
+        startTransition(() => {
+            setState({
+                mounted: true,
+                tweetId: randomTweetId,
+            })
+        })
     }, [])
+
+    const { resolvedTheme } = useTheme()
+    const { mounted, tweetId } = state
 
     if (!mounted || !tweetId) {
         return (

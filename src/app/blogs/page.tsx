@@ -1,7 +1,6 @@
 import { blogs } from "@/lib/data/blogs"
 import Link from "next/link"
 import { ExternalLink } from "lucide-react"
-import { Badge } from "@/components/ui/badge"
 
 export const metadata = {
     title: "Blogs | Siddhant Vispute",
