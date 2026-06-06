@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, startTransition } from 'react'
 import { EmbeddedTweet, TweetNotFound, TweetSkeleton, useTweet } from 'react-tweet'
 import { tweetIds } from '@/data/tweet-list'
 import { useTheme } from 'next-themes'
@@ -42,17 +42,24 @@ function SafeTweet({ id, apiUrl, fallback = <TweetSkeleton />, components, fetch
  * This version renders tweets as native HTML/CSS instead of heavy iframes.
  */
 export function TweetDisplay() {
-    const [tweetId, setTweetId] = useState<string | null>(null)
-    const { resolvedTheme } = useTheme()
-    const [mounted, setMounted] = useState(false)
+    const [state, setState] = useState<{ mounted: boolean; tweetId: string | null }>({
+        mounted: false,
+        tweetId: null,
+    })
 
     useEffect(() => {
-        // eslint-disable-next-line react-hooks/set-state-in-effect
-        setMounted(true)
         // Pick a random tweet once on mount
         const randomTweetId = tweetIds[Math.floor(Math.random() * tweetIds.length)]
-        setTweetId(randomTweetId)
+        startTransition(() => {
+            setState({
+                mounted: true,
+                tweetId: randomTweetId,
+            })
+        })
     }, [])
+
+    const { resolvedTheme } = useTheme()
+    const { mounted, tweetId } = state
 
     if (!mounted || !tweetId) {
         return (
